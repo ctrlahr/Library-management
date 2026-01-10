@@ -1,5 +1,5 @@
 package com.jorge.library.controller;
 
-public class AuthorsController {
+public class AuthorController {
 
 }

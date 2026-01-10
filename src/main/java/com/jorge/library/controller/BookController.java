@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("books")
-public class BooksController {
+public class BookController {
 
     @GetMapping("register")
     public String register() {
