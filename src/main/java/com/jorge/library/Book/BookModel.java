@@ -1,13 +1,11 @@
-package com.jorge.library.Model;
+package com.jorge.library.Book;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jorge.library.Author.AuthorModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.logging.log4j.util.Lazy;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_book")

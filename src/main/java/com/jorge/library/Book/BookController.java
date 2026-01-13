@@ -1,4 +1,4 @@
-package com.jorge.library.controller;
+package com.jorge.library.Book;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("books")
 public class BookController {
 
-    @GetMapping("register")
+//    Endpoints
+
+//    Test Endpoint
+    @GetMapping("test")
     public String register() {
         return "Working!!";
     }
+
+//    ShowAll books endpoint
+    
 
 }

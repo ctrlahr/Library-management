@@ -1,11 +1,11 @@
-package com.jorge.library.Model;
+package com.jorge.library.Author;
 
+import com.jorge.library.Book.BookModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @Entity
