@@ -12,11 +12,11 @@ public class BookController {
 
 //    Test Endpoint
     @GetMapping("test")
-    public String register() {
+    public String bookTest() {
         return "Working!!";
     }
 
-//    ShowAll books endpoint
-    
+//    Get all books
+
 
 }
