@@ -21,10 +21,17 @@ public class AuthorService {
     }
 
 //    Métodos
+
+//    List authors
     public List<AuthorDTO> listAuthors(){
         List<AuthorModel> author = authorRepository.findAll();
         return author.stream()
                 .map(authorMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+//    Delete author
+    public void deleteAuthor(Long id) {
+        authorRepository.deleteById(id);
     }
 }

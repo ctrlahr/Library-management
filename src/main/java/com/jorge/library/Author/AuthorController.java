@@ -1,8 +1,7 @@
 package com.jorge.library.Author;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.PrivateKey;
 import java.util.List;
@@ -29,5 +28,11 @@ public class AuthorController {
         return authorService.listAuthors();
     }
 
+//    Delete author
+    @DeleteMapping("deleteAuthor/{id}")
+    public ResponseEntity<String> deleteAuthor(@PathVariable Long id) {
+        authorService.deleteAuthor(id);
+        return ResponseEntity.ok("Author deleted successfullya");
+    }
 
 }
