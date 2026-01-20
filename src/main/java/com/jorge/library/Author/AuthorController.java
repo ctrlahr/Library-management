@@ -1,6 +1,8 @@
 package com.jorge.library.Author;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.PrivateKey;
@@ -32,7 +34,7 @@ public class AuthorController {
     @DeleteMapping("deleteAuthor/{id}")
     public ResponseEntity<String> deleteAuthor(@PathVariable Long id) {
         authorService.deleteAuthor(id);
-        return ResponseEntity.ok("Author deleted successfullya");
+        return ResponseEntity.ok("Author deleted successfully");
     }
 
 }
