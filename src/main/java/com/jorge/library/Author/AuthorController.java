@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.PrivateKey;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("author")
 public class AuthorController {
 
-    private AuthorService authorService;
+    private final AuthorService authorService;
 
     public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
@@ -25,16 +26,23 @@ public class AuthorController {
     public String authorTest() {return "Working!!";}
 
 //    Get all authors
-    @GetMapping("listAuthors")
+    @GetMapping("listAll")
     public List<AuthorDTO> listAuthors() {
         return authorService.listAuthors();
     }
 
 //    Delete author
-    @DeleteMapping("deleteAuthor/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteAuthor(@PathVariable Long id) {
-        authorService.deleteAuthor(id);
-        return ResponseEntity.ok("Author deleted successfully");
+        AuthorDTO author = authorService.listAuthorById(id);
+        if (author == null) {
+            return ResponseEntity.badRequest()
+                    .body("This author dont exist!");
+        }
+        else {
+            authorService.deleteAuthor(id);
+            return ResponseEntity.ok()
+                    .body("Author " + author.getName() + " deleted successfully!");
+        }
     }
-
 }
