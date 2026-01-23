@@ -46,4 +46,11 @@ public class AuthorService {
     public void deleteAuthor(Long id) {
         authorRepository.deleteById(id);
     }
+
+//    Create author
+    public AuthorDTO createAuthor(AuthorDTO authorDTO) {
+        AuthorModel authorModel = authorMapper.toEntity(authorDTO);
+        authorModel = authorRepository.save(authorModel);
+        return authorMapper.toDTO(authorModel);
+    }
 }

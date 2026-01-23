@@ -1,8 +1,10 @@
 package com.jorge.library.Author;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.PrivateKey;
@@ -45,4 +47,13 @@ public class AuthorController {
                     .body("Author " + author.getName() + " deleted successfully!");
         }
     }
+
+//    Create author
+    @PostMapping("create")
+    public ResponseEntity<String> createAuthor(@RequestBody AuthorDTO author) {
+        AuthorDTO authorCreated = authorService.createAuthor(author);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Author " + authorCreated + " created!!");
+        }
 }
