@@ -13,7 +13,7 @@ public class AuthorDTO {
 
     private Long id;
     private String name;
-    private int age;
+    private Integer age;
     private List<BookModel> books;
 
 }
