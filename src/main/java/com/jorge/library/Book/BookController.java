@@ -4,19 +4,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("book")
 public class BookController {
 
-//    Endpoints
+    private BookService bookService;
 
-//    Test Endpoint
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+
+    //    Test Endpoint
     @GetMapping("test")
     public String bookTest() {
         return "Working!!";
     }
 
-//    Get all books
 
+//    List all books
+    @GetMapping("listAll")
+    public List<BookDTO> listBooks() {
+        return bookService.listBooks();
+    }
 
 }

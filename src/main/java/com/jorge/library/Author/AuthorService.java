@@ -23,8 +23,6 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
-//    Métodos
-
 //    List authors
     public List<AuthorDTO> listAuthors(){
         List<AuthorModel> author = authorRepository.findAll();
