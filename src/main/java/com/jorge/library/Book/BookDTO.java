@@ -13,6 +13,6 @@ public class BookDTO {
 
     private Long id;
     private String name;
-    private AuthorModel author;
+    private Long authorId;
 
 }
