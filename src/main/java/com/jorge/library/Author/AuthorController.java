@@ -1,15 +1,10 @@
 package com.jorge.library.Author;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PrivateKey;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("author")
@@ -60,8 +55,17 @@ public class AuthorController {
 
 //     Update author
     @PutMapping("update/{id}")
-    public AuthorDTO updateAuthor(@PathVariable Long id, @RequestBody AuthorDTO authorDTO) {
-        return authorService.updateAuthor(id, authorDTO);
+    public ResponseEntity<String> updateAuthor(@PathVariable Long id, @RequestBody AuthorDTO authorDTO) {
+        authorService.updateAuthor(id, authorDTO);
+
+        if (id == null) {
+            return ResponseEntity.badRequest()
+                    .body("Author not founded!");
+        }
+        else {
+            return ResponseEntity.ok()
+                    .body("Author " + authorDTO.getName() + " updated!!");
+        }
     }
 
 }
