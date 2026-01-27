@@ -53,4 +53,15 @@ public class AuthorService {
         authorModel = authorRepository.save(authorModel);
         return authorMapper.toDTO(authorModel);
     }
+
+//    Update author
+    public AuthorDTO updateAuthor(Long id, AuthorDTO authorDTO) {
+        Optional<AuthorModel> author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            AuthorModel authorUpdated = authorMapper.toEntity(authorDTO);
+            authorUpdated.setId(id);
+            authorRepository.save(authorUpdated);
+        }
+        return null;
+    }
 }
