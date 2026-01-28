@@ -32,6 +32,11 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+//    Delete book
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
+    }
+
 
 
 }

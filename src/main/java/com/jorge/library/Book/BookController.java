@@ -1,8 +1,7 @@
 package com.jorge.library.Book;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +27,18 @@ public class BookController {
     @GetMapping("listAll")
     public List<BookDTO> listBooks() {
         return bookService.listBooks();
+    }
+
+//    Delete book
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
+        if (id == null) {
+            return ResponseEntity.badRequest()
+                    .body("An ID is required to delete a book!");
+        }
+        bookService.deleteBook(id);
+        return ResponseEntity.ok()
+                .body("Book deleted!");
     }
 
 }
