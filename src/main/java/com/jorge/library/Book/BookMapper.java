@@ -1,9 +1,20 @@
 package com.jorge.library.Book;
 
+import com.jorge.library.Author.AuthorDTO;
+import com.jorge.library.Author.AuthorModel;
+import com.jorge.library.Author.AuthorRepository;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class BookMapper {
+
+    AuthorRepository authorRepository;
+
+    public BookMapper(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     public BookDTO toDTO(BookModel book) {
         if (book == null) {
@@ -14,7 +25,7 @@ public class BookMapper {
 
         dto.setName(book.getName());
         dto.setId(book.getId());
-        dto.setAuthorId(book.getId());
+        dto.setAuthor_id(book.getAuthor().getId());
 
         return dto;
 
@@ -26,10 +37,12 @@ public class BookMapper {
         }
 
         BookModel book = new BookModel();
+        AuthorModel author = authorRepository.findById(dto.getAuthor_id())
+                        .orElseThrow(() -> new IllegalArgumentException("Author not founded!"));
 
         book.setName(dto.getName());
         book.setId(dto.getId());
-        book.setId(dto.getAuthorId());
+        book.setAuthor(author);
 
         return book;
     }
