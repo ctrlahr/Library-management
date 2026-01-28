@@ -38,5 +38,12 @@ public class BookService {
     }
 
 
+//    Create book
+    public BookDTO createBook(BookDTO bookDTO) {
+        BookModel bookModel = bookMapper.toEntity(bookDTO);
+        bookModel = bookRepository.save(bookModel);
+        return bookMapper.toDTO(bookModel);
+    }
+
 
 }

@@ -3,7 +3,9 @@ package com.jorge.library.Book;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("book")
@@ -39,6 +41,17 @@ public class BookController {
         bookService.deleteBook(id);
         return ResponseEntity.ok()
                 .body("Book deleted!");
+    }
+
+//    Create book
+    @PostMapping("create")
+    public BookDTO createBook(@RequestBody BookDTO bookDTO) {
+        if (bookDTO == null) {
+            System.out.println("The book has not created, something went wrong!!");
+            return null;
+        }
+        System.out.println("Book created!!");
+        return bookService.createBook(bookDTO);
     }
 
 }
