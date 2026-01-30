@@ -5,7 +5,9 @@ import org.hibernate.sql.model.ast.builder.CollectionRowDeleteByUpdateSetNullBui
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -43,6 +45,14 @@ public class BookService {
         BookModel bookModel = bookMapper.toEntity(bookDTO);
         bookModel = bookRepository.save(bookModel);
         return bookMapper.toDTO(bookModel);
+    }
+
+//    Update book
+    public BookDTO updateBook(Long id, BookDTO bookDTO) {
+        bookDTO.setId(id);
+        BookModel book = bookMapper.toEntity(bookDTO);
+        bookRepository.save(book);
+        return bookMapper.toDTO(book);
     }
 
 

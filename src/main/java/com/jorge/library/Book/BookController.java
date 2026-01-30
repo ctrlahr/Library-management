@@ -1,5 +1,6 @@
 package com.jorge.library.Book;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,6 +53,20 @@ public class BookController {
         }
         System.out.println("Book created!!");
         return bookService.createBook(bookDTO);
+    }
+
+//    Update book
+    @PutMapping("update/{id}")
+    public ResponseEntity<String> updateBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
+        if (id == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Author doesn't exists");
+        }
+        else if (bookDTO == null) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("The request needs a body");
+        }
+        BookDTO book_created = bookService.updateBook(id, bookDTO);
+        return ResponseEntity.status(HttpStatus.OK).body("Book " + book_created.getName() + " updated!");
+
     }
 
 }
