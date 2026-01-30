@@ -1,5 +1,6 @@
 package com.jorge.library.Book;
 
+import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,23 +37,21 @@ public class BookController {
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         if (id == null) {
-            return ResponseEntity.badRequest()
-                    .body("An ID is required to delete a book!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("An ID is required to delete a book!");
         }
         bookService.deleteBook(id);
-        return ResponseEntity.ok()
-                .body("Book deleted!");
+        return ResponseEntity.status(HttpStatus.OK).body("Book deleted!");
     }
 
 //    Create book
     @PostMapping("create")
-    public BookDTO createBook(@RequestBody BookDTO bookDTO) {
+    public ResponseEntity<String> createBook(@RequestBody BookDTO bookDTO) {
         if (bookDTO == null) {
-            System.out.println("The book has not created, something went wrong!!");
-            return null;
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The book has not created, something went wrong!!");
         }
         System.out.println("Book created!!");
-        return bookService.createBook(bookDTO);
+        bookService.createBook(bookDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Book created!");
     }
 
 //    Update book
