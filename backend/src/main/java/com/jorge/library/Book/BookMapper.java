@@ -1,11 +1,8 @@
 package com.jorge.library.Book;
 
-import com.jorge.library.Author.AuthorDTO;
 import com.jorge.library.Author.AuthorModel;
 import com.jorge.library.Author.AuthorRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class BookMapper {

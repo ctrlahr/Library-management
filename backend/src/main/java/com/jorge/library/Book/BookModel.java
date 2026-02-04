@@ -1,7 +1,6 @@
 package com.jorge.library.Book;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jorge.library.Author.AuthorDTO;
 import com.jorge.library.Author.AuthorModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

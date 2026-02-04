@@ -1,13 +1,9 @@
 package com.jorge.library.Book;
 
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.sql.model.ast.builder.CollectionRowDeleteByUpdateSetNullBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
