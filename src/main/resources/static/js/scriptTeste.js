@@ -4,7 +4,7 @@ async function callAPI() {
     const credentials = btoa(`${username}:${password}`);
     
     try {
-        const response = await fetch('author/listAll', {
+        const response = await fetch('book/listAll', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
