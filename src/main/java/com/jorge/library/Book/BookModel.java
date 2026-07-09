@@ -22,7 +22,7 @@ public class BookModel {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author", nullable = false)
+    @JoinColumn(name = "author_id", nullable = false)
     @JsonIgnore
     private AuthorModel author;
 }
